@@ -1,0 +1,146 @@
+<mxfile host="app.diagrams.net" agent="ChatGPT">
+  <diagram id="modeloLogico" name="Modelo Lógico">
+    <mxGraphModel dx="2383" dy="1322" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=left;spacingLeft=7;verticalAlign=top;" value="&lt;div style=&quot;text-align:center;font-weight:bold;font-size:13px;&quot;&gt;PACIENTE&lt;/div&gt;&lt;hr style=&quot;margin:4px 0;&quot;/&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;PK  codigo_paciente      INT&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    nome                 VARCHAR(100) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;UQ  cpf                  CHAR(11) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    data_nascimento      DATE NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    sexo                 ENUM(&#39;M&#39;,&#39;F&#39;) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    email                VARCHAR(100)&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    endereco             VARCHAR(100) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;CHECK sexo IN (&#39;M&#39;,&#39;F&#39;)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="225" width="360" x="30" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;align=left;spacingLeft=7;verticalAlign=top;" value="&lt;div style=&quot;text-align:center;font-weight:bold;font-size:13px;&quot;&gt;TELEFONE_PACIENTE&lt;/div&gt;&lt;hr style=&quot;margin:4px 0;&quot;/&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;PK  codigo_telefone      INT&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;FK  codigo_paciente      INT NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    numero               VARCHAR(20) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    tipo                 VARCHAR(20)&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;-&amp;gt; PACIENTE(codigo_paciente)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="155" width="330" x="435" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=left;spacingLeft=7;verticalAlign=top;" value="&lt;div style=&quot;text-align:center;font-weight:bold;font-size:13px;&quot;&gt;CONTATO_EMERGENCIA&lt;/div&gt;&lt;hr style=&quot;margin:4px 0;&quot;/&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;PK  codigo_contato       INT&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;FK  codigo_paciente      INT NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    nome                 VARCHAR(100) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    telefone             VARCHAR(20) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    parentesco           VARCHAR(50)&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;-&amp;gt; PACIENTE(codigo_paciente)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="175" width="350" x="830" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=7;verticalAlign=top;" value="&lt;div style=&quot;text-align:center;font-weight:bold;font-size:13px;&quot;&gt;CONVENIO&lt;/div&gt;&lt;hr style=&quot;margin:4px 0;&quot;/&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;PK  codigo_convenio      INT&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    nome                 VARCHAR(100) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;UQ  cnpj                 CHAR(14) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    telefone             VARCHAR(20)&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    percentual_cobertura DECIMAL(5,2) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;CHECK percentual entre 0 e 100&lt;/div&gt;" vertex="1">
+          <mxGeometry height="180" width="370" x="1190" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=7;verticalAlign=top;" value="&lt;div style=&quot;text-align:center;font-weight:bold;font-size:13px;&quot;&gt;PACIENTE_CONVENIO&lt;/div&gt;&lt;hr style=&quot;margin:4px 0;&quot;/&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;PK/FK codigo_paciente    INT&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;PK/FK codigo_convenio    INT&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;      carteirinha        VARCHAR(30) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;      validade           DATE&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;      tipo_vinculo       VARCHAR(30) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;-&amp;gt; PACIENTE(codigo_paciente)&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;-&amp;gt; CONVENIO(codigo_convenio)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="195" width="360" x="1670" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;spacingLeft=7;verticalAlign=top;" value="&lt;div style=&quot;text-align:center;font-weight:bold;font-size:13px;&quot;&gt;CONSULTA&lt;/div&gt;&lt;hr style=&quot;margin:4px 0;&quot;/&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;PK  codigo_consulta      INT&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;FK  codigo_paciente      INT NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;FK  codigo_medico        INT NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    data                 DATE NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    hora                 TIME NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;UQ  (codigo_medico, data, hora)&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;UQ  (codigo_paciente, codigo_medico, data, hora)&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;-&amp;gt; PACIENTE / MEDICO&lt;/div&gt;" vertex="1">
+          <mxGeometry height="225" width="410" x="30" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=left;spacingLeft=7;verticalAlign=top;" value="&lt;div style=&quot;text-align:center;font-weight:bold;font-size:13px;&quot;&gt;MEDICO&lt;/div&gt;&lt;hr style=&quot;margin:4px 0;&quot;/&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;PK  codigo_medico        INT&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;FK  codigo_consultorio   INT NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    nome                 VARCHAR(100) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;UQ  crm                  VARCHAR(20) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    uf_crm               CHAR(2) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    data_admissao        DATE NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    telefone             VARCHAR(20)&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    email                VARCHAR(100)&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    salario              DECIMAL(10,2) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;CHECK salario &amp;gt;= 0&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;-&amp;gt; CONSULTORIO(codigo_consultorio)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="275" width="390" x="620" y="415" as="geometry" />
+        </mxCell>
+        <mxCell id="10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;spacingLeft=7;verticalAlign=top;" value="&lt;div style=&quot;text-align:center;font-weight:bold;font-size:13px;&quot;&gt;CONSULTORIO&lt;/div&gt;&lt;hr style=&quot;margin:4px 0;&quot;/&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;PK  codigo_consultorio   INT&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    identificacao        VARCHAR(50) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    localizacao          VARCHAR(100)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="330" x="960" y="255" as="geometry" />
+        </mxCell>
+        <mxCell id="11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=7;verticalAlign=top;" value="&lt;div style=&quot;text-align:center;font-weight:bold;font-size:13px;&quot;&gt;ESPECIALIDADE&lt;/div&gt;&lt;hr style=&quot;margin:4px 0;&quot;/&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;PK  codigo_especialidade INT&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    nome                 VARCHAR(80) NOT NULL&lt;/div&gt;" vertex="1">
+          <mxGeometry height="105" width="330" x="1400" y="335" as="geometry" />
+        </mxCell>
+        <mxCell id="12" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=7;verticalAlign=top;" value="&lt;div style=&quot;text-align:center;font-weight:bold;font-size:13px;&quot;&gt;MEDICO_ESPECIALIDADE&lt;/div&gt;&lt;hr style=&quot;margin:4px 0;&quot;/&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;PK/FK codigo_medico        INT&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;PK/FK codigo_especialidade INT&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;-&amp;gt; MEDICO(codigo_medico)&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;-&amp;gt; ESPECIALIDADE(codigo_especialidade)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="135" width="310" x="1760" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;align=left;spacingLeft=7;verticalAlign=top;" value="&lt;div style=&quot;text-align:center;font-weight:bold;font-size:13px;&quot;&gt;PRESCRICAO&lt;/div&gt;&lt;hr style=&quot;margin:4px 0;&quot;/&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;PK  codigo_prescricao    INT&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;FK  codigo_consulta      INT NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    descricao            VARCHAR(300) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;-&amp;gt; CONSULTA(codigo_consulta)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="350" x="30" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="15" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=left;spacingLeft=7;verticalAlign=top;" value="&lt;div style=&quot;text-align:center;font-weight:bold;font-size:13px;&quot;&gt;ITEM_SOLICITACAO&lt;/div&gt;&lt;hr style=&quot;margin:4px 0;&quot;/&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;PK  codigo_item          INT&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;FK  codigo_solicitacao   INT NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;FK  codigo_exame         INT NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    data_realizacao      DATE&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    resultado            VARCHAR(300)&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    status               ENUM(&#39;PENDENTE&#39;,&#39;REALIZADO&#39;,&#39;CANCELADO&#39;) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;CHECK status permitido&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;-&amp;gt; SOLICITACAO_EXAME / EXAME&lt;/div&gt;" vertex="1">
+          <mxGeometry height="225" width="430" x="765" y="795" as="geometry" />
+        </mxCell>
+        <mxCell id="16" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;spacingLeft=7;verticalAlign=top;" value="&lt;div style=&quot;text-align:center;font-weight:bold;font-size:13px;&quot;&gt;EXAME&lt;/div&gt;&lt;hr style=&quot;margin:4px 0;&quot;/&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;PK  codigo_exame         INT&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    nome                 VARCHAR(100) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    descricao            VARCHAR(200)&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    valor_base           DECIMAL(10,2) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    prazo                INT NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    categoria            VARCHAR(50) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;CHECK valor_base &amp;gt;= 0&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;CHECK prazo &amp;gt;= 0&lt;/div&gt;" vertex="1">
+          <mxGeometry height="210" width="360" x="1290" y="870" as="geometry" />
+        </mxCell>
+        <mxCell id="17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=7;verticalAlign=top;" value="&lt;div style=&quot;text-align:center;font-weight:bold;font-size:13px;&quot;&gt;PAGAMENTO&lt;/div&gt;&lt;hr style=&quot;margin:4px 0;&quot;/&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;PK  codigo_pagamento     INT&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;FK  codigo_consulta      INT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;FK  codigo_solicitacao   INT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;FK  codigo_convenio      INT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    forma_pagamento      ENUM(&#39;CONVENIO&#39;,&#39;DINHEIRO&#39;,&#39;DEBITO&#39;,&#39;CREDITO&#39;,&#39;PIX&#39;) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    valor                DECIMAL(10,2) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    data_pagamento       DATE&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    status               ENUM(&#39;PENDENTE&#39;,&#39;PAGO&#39;,&#39;CANCELADO&#39;) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;UQ  codigo_consulta      (1:1)&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;UQ  codigo_solicitacao   (1:1)&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;CHECK valor &amp;gt;= 0&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;CHECK exatamente 1 origem: consulta XOR solicitacao&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;CHECK CONVENIO exige codigo_convenio&lt;/div&gt;" vertex="1">
+          <mxGeometry height="300" width="430" x="1690" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="18" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;align=left;spacingLeft=7;verticalAlign=top;" value="&lt;div style=&quot;text-align:center;font-weight:bold;font-size:13px;&quot;&gt;FUNCIONARIO&lt;/div&gt;&lt;hr style=&quot;margin:4px 0;&quot;/&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;PK/UQ matricula          INT&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;FK     matricula_supervisor INT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;       nome              VARCHAR(100) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;UQ     cpf               CHAR(11) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;       cargo             VARCHAR(50) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;       data_admissao     DATE NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;       salario           DECIMAL(10,2) NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;       telefone          VARCHAR(20)&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;CHECK salario &amp;gt;= 0&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;-&amp;gt; FUNCIONARIO(matricula) [supervisor]&lt;/div&gt;" vertex="1">
+          <mxGeometry height="245" width="430" x="30" y="1060" as="geometry" />
+        </mxCell>
+        <mxCell id="19" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;" value="&lt;b&gt;REGRAS CONVERTIDAS DO MER&lt;/b&gt;&lt;br/&gt;• N:N PACIENTE–CONVENIO → PACIENTE_CONVENIO.&lt;br/&gt;• N:N MEDICO–ESPECIALIDADE → MEDICO_ESPECIALIDADE.&lt;br/&gt;• Telefone multivalorado → TELEFONE_PACIENTE.&lt;br/&gt;• Supervisor → FK recursiva matricula_supervisor.&lt;br/&gt;• Pagamento usa duas FKs opcionais, mas um CHECK deve permitir somente uma origem.&lt;br/&gt;• codigo_consulta e codigo_solicitacao em PAGAMENTO são UNIQUE para representar 1:1." vertex="1">
+          <mxGeometry height="180" width="670" x="520" y="1080" as="geometry" />
+        </mxCell>
+        <mxCell id="20" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;" value="&lt;b&gt;LEGENDA&lt;/b&gt;&lt;br/&gt;PK = chave primária&lt;br/&gt;FK = chave estrangeira&lt;br/&gt;UQ = UNIQUE&lt;br/&gt;NOT NULL = obrigatório&lt;br/&gt;CHECK = regra de domínio/negócio" vertex="1">
+          <mxGeometry height="135" width="350" x="1250" y="1115" as="geometry" />
+        </mxCell>
+        <mxCell id="21" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;" value="&lt;b&gt;OBSERVAÇÃO&lt;/b&gt;&lt;br/&gt;Este modelo lógico foi convertido a partir do arquivo MER anexado e das regras da atividade. Os relacionamentos passam a ser representados por FKs e tabelas associativas." vertex="1">
+          <mxGeometry height="135" width="460" x="1640" y="1115" as="geometry" />
+        </mxCell>
+        <mxCell id="22" edge="1" parent="1" source="4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.2;" target="3" value="FK codigo_paciente">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="23" edge="1" parent="1" source="5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.2;" target="3" value="FK codigo_paciente">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="610" y="210" />
+              <mxPoint x="610" y="242.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24" edge="1" parent="1" source="7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.2;" target="3" value="FK codigo_paciente">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="995" y="240" />
+              <mxPoint x="995" y="242.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="25" edge="1" parent="1" source="7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.2;" target="6" value="FK codigo_convenio">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="26" edge="1" parent="1" source="8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.2;" target="3" value="FK codigo_paciente">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="27" edge="1" parent="1" source="8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.2;" target="9" value="FK codigo_medico">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="28" edge="1" parent="1" source="9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.2;" target="10" value="FK codigo_consultorio">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="29" edge="1" parent="1" source="12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.2;" target="9" value="FK codigo_medico">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="30" edge="1" parent="1" source="12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.2;" target="11" value="FK codigo_especialidade">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="31" edge="1" parent="1" source="13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.2;" target="8" value="FK codigo_consulta">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="32" edge="1" parent="1" source="14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.2;" target="8" value="FK codigo_consulta">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="33" edge="1" parent="1" source="15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.2;exitX=0;exitY=0.75;exitDx=0;exitDy=0;" value="FK codigo_solicitacao">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="770.5" y="928.8" />
+              <mxPoint x="770.5" y="930" />
+              <mxPoint x="720" y="930" />
+            </Array>
+            <mxPoint x="790" y="937.5" as="sourcePoint" />
+            <mxPoint x="720" y="850" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="34" edge="1" parent="1" source="15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.2;" target="16" value="FK codigo_exame">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="35" edge="1" parent="1" source="14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.2;" target="8" value="FK opcional / UNIQUE">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="310" y="875" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="36" edge="1" parent="1" source="17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.2;" target="14" value="FK opcional / UNIQUE">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="37" edge="1" parent="1" source="17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.2;" target="6" value="FK opcional">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="38" edge="1" parent="1" source="18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.2;" target="18" value="FK matricula_supervisor">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6PIo1QPCL8Qb0oszg_nW-38" edge="1" parent="1" source="17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.2;" target="14" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1690" y="850" as="sourcePoint" />
+            <mxPoint x="235" y="665" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=left;spacingLeft=7;verticalAlign=top;" value="&lt;div style=&quot;text-align:center;font-weight:bold;font-size:13px;&quot;&gt;SOLICITACAO_EXAME&lt;/div&gt;&lt;hr style=&quot;margin:4px 0;&quot;/&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;PK  codigo_solicitacao   INT&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;FK  codigo_consulta      INT NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;    data_solicitacao     DATE NOT NULL&lt;/div&gt;&lt;div style=&quot;font-family:monospace;&quot;&gt;-&amp;gt; CONSULTA(codigo_consulta)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="360" x="390" y="720" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
